@@ -11,7 +11,7 @@ public class DetailsPage : BaseContentPage<DetailsViewModel>
         {
             TextOverride = "mumu",
             //IconOverride = "appicon.svg",
-            
+            //want to test somethin
         });
 
         this.Bind(TitleProperty,
