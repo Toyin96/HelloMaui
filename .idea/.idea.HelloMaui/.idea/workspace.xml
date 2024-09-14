@@ -14,7 +14,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6316edd8-0ef2-42ea-9507-54867c7ae70c" name="Changes" comment="updated the workflow file" />
+    <list default="true" id="6316edd8-0ef2-42ea-9507-54867c7ae70c" name="Changes" comment="updated workflow file" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -170,7 +170,7 @@
       <workItem from="1726169677481" duration="17775000" />
       <workItem from="1726240208845" duration="2417000" />
       <workItem from="1726298020039" duration="12653000" />
-      <workItem from="1726312396640" duration="5840000" />
+      <workItem from="1726312396640" duration="6146000" />
     </task>
     <task id="LOCAL-00001" summary="added content page for app and a workflow when making pr to main branch">
       <option name="closed" value="true" />
@@ -196,7 +196,15 @@
       <option name="project" value="LOCAL" />
       <updated>1726319460847</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="updated workflow file">
+      <option name="closed" value="true" />
+      <created>1726319715548</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1726319715548</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -221,7 +229,8 @@
     <MESSAGE value="added content page for app and a workflow when making pr to main branch" />
     <MESSAGE value="want to test something" />
     <MESSAGE value="updated the workflow file" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated the workflow file" />
+    <MESSAGE value="updated workflow file" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated workflow file" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

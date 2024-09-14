@@ -17,7 +17,7 @@ public class ListViewModel : BaseViewModel
     private bool _isRefreshing;
     private string _searchBarText;
     private bool _isSearchBarEnabled;
-    private ObservableCollection<MauiLibrary> _mauiLibraries = new ( GetDataSource());
+    private ObservableCollection<MauiLibrary> _mauiLibraries = new(GetDataSource());
 
     public bool IsRefreshing
     {
@@ -63,14 +63,14 @@ public class ListViewModel : BaseViewModel
         get => _selectedLibrary;
         set => SetField(ref _selectedLibrary, value);
     }
-    
+
     public ListViewModel()
     {
         _itemSelectedCommand = new AsyncRelayCommand(async () => await HandlerSelectionChanged());
         _refreshCommand = new AsyncRelayCommand(async () => await HandleRefreshing());
         _searchItemsCommand = new RelayCommand(() => SearchItemsForUser());
     }
-    
+
     private async Task HandlerSelectionChanged()
     {
         if (_selectedLibrary != null)
@@ -80,21 +80,21 @@ public class ListViewModel : BaseViewModel
                 [DetailsViewModel.DetailsPageKey] = _selectedLibrary
             });
         }
-        
+
         _selectedLibrary = null;
     }
-    
+
     private async Task HandleRefreshing()
     {
         // disable search bar
-         IsSearchBarEnabled = false;
+        IsSearchBarEnabled = false;
 
         await Task.Delay(TimeSpan.FromSeconds(2));
-        
+
         MauiLibraries.Add(
             new MauiLibrary()
             {
-                Title = "Sharpnado.Tabs",  
+                Title = "Sharpnado.Tabs",
                 Description = "Pure Maui and Xamarin.form tabs, scrollable tabs, bottom tabs, badge",
                 ImageUrl = "https://api.nuget.org/v3-flatcontainer/sharpnado.tabs/2.2.0/icon"
             });
@@ -103,89 +103,89 @@ public class ListViewModel : BaseViewModel
         IsSearchBarEnabled = true; // enable it back after refreshing the list
     }
 
-        static List<MauiLibrary> GetDataSource() =>
-    [
-        new MauiLibrary
-        {
-            Title = "CommunityToolkit.Maui",
-            Description =
-                "A collection of common helpers, converters, and UI controls for building .NET MAUI applications. It includes features like StatusBar, TabView, Expander, and StateContainer.",
-            ImageUrl = "https://api.nuget.org/v3-flatcontainer/communitytoolkit.mvvm/8.2.0/icon"
-        },
+    static List<MauiLibrary> GetDataSource() =>
+[
+    new MauiLibrary
+    {
+        Title = "CommunityToolkit.Maui",
+        Description =
+            "A collection of common helpers, converters, and UI controls for building .NET MAUI applications. It includes features like StatusBar, TabView, Expander, and StateContainer.",
+        ImageUrl = "https://api.nuget.org/v3-flatcontainer/communitytoolkit.mvvm/8.2.0/icon"
+    },
 
-        new MauiLibrary
-        {
-            Title = "Syncfusion .NET MAUI Controls",
-            Description =
-                "A suite of UI controls for building modern, cross-platform applications using .NET MAUI. It includes controls like charts, data grids, gauges, calendars, and more.",
-            ImageUrl = "https://api.nuget.org/v3-flatcontainer/microsoft.maui.controls/8.0.3/icon"
-        },
+    new MauiLibrary
+    {
+        Title = "Syncfusion .NET MAUI Controls",
+        Description =
+            "A suite of UI controls for building modern, cross-platform applications using .NET MAUI. It includes controls like charts, data grids, gauges, calendars, and more.",
+        ImageUrl = "https://api.nuget.org/v3-flatcontainer/microsoft.maui.controls/8.0.3/icon"
+    },
 
-        new MauiLibrary
-        {
-            Title = "DevExpress .NET MAUI Controls",
-            Description =
-                "A set of high-performance controls optimized for .NET MAUI applications. It includes charts, data editors, gauges, and more, with a focus on enterprise-level applications.",
-            ImageUrl = "https://api.nuget.org/v3-flatcontainer/esri.arcgisruntime.maui/100.14.1-preview3/icon"
-        },
+    new MauiLibrary
+    {
+        Title = "DevExpress .NET MAUI Controls",
+        Description =
+            "A set of high-performance controls optimized for .NET MAUI applications. It includes charts, data editors, gauges, and more, with a focus on enterprise-level applications.",
+        ImageUrl = "https://api.nuget.org/v3-flatcontainer/esri.arcgisruntime.maui/100.14.1-preview3/icon"
+    },
 
-        new MauiLibrary
-        {
-            Title = "Telerik UI for .NET MAUI",
-            Description =
-                "A comprehensive UI component suite for .NET MAUI development that includes charts, data grids, gauges, calendars, and more.",
-            ImageUrl = "https://api.nuget.org/v3-flatcontainer/syncfusion.maui.core/21.2.10/icon",
-        },
+    new MauiLibrary
+    {
+        Title = "Telerik UI for .NET MAUI",
+        Description =
+            "A comprehensive UI component suite for .NET MAUI development that includes charts, data grids, gauges, calendars, and more.",
+        ImageUrl = "https://api.nuget.org/v3-flatcontainer/syncfusion.maui.core/21.2.10/icon",
+    },
 
-        new MauiLibrary
-        {
-            Title = "Shiny.NET MAUI",
-            Description =
-                "A library that provides cross-platform APIs for accessing native device services, such as geolocation, notifications, sensors, and more.",
-            ImageUrl = "https://api.nuget.org/v3-flatcontainer/communitytoolkit.maui/5.2.0/icon"
-        },
+    new MauiLibrary
+    {
+        Title = "Shiny.NET MAUI",
+        Description =
+            "A library that provides cross-platform APIs for accessing native device services, such as geolocation, notifications, sensors, and more.",
+        ImageUrl = "https://api.nuget.org/v3-flatcontainer/communitytoolkit.maui/5.2.0/icon"
+    },
 
-        new MauiLibrary
-        {
-            Title = "Refractored.Maui.FFImageLoading",
-            Description =
-                "A library for loading and caching images in .NET MAUI applications. It supports loading images from remote URLs, caching, transformations, and more.",
-            ImageUrl = "https://api.nuget.org/v3-flatcontainer/communitytoolkit.maui.markup/3.2.0/icon"
-        },
+    new MauiLibrary
+    {
+        Title = "Refractored.Maui.FFImageLoading",
+        Description =
+            "A library for loading and caching images in .NET MAUI applications. It supports loading images from remote URLs, caching, transformations, and more.",
+        ImageUrl = "https://api.nuget.org/v3-flatcontainer/communitytoolkit.maui.markup/3.2.0/icon"
+    },
 
-        new MauiLibrary
-        {
-            Title = "Rg.Plugins.Popup for .NET MAUI",
-            Description =
-                "A popular plugin for creating customizable pop-ups and modals in .NET MAUI applications. It supports animations, complex layouts, and user interaction.",
-            ImageUrl = "https://api.nuget.org/v3-flatcontainer/sentry.maui/3.33.1/icon"
-        },
+    new MauiLibrary
+    {
+        Title = "Rg.Plugins.Popup for .NET MAUI",
+        Description =
+            "A popular plugin for creating customizable pop-ups and modals in .NET MAUI applications. It supports animations, complex layouts, and user interaction.",
+        ImageUrl = "https://api.nuget.org/v3-flatcontainer/sentry.maui/3.33.1/icon"
+    },
 
-        new MauiLibrary
-        {
-            Title = "ReactiveUI for .NET MAUI",
-            Description =
-                "A framework that enables building reactive applications using the MVVM pattern in .NET MAUI. It provides reactive bindings, observables, and other features for building highly interactive applications.",
-            ImageUrl = "https://api.nuget.org/v3-flatcontainer/microsoft.maui.controls/8.0.3/icon",
-        },
+    new MauiLibrary
+    {
+        Title = "ReactiveUI for .NET MAUI",
+        Description =
+            "A framework that enables building reactive applications using the MVVM pattern in .NET MAUI. It provides reactive bindings, observables, and other features for building highly interactive applications.",
+        ImageUrl = "https://api.nuget.org/v3-flatcontainer/microsoft.maui.controls/8.0.3/icon",
+    },
 
-        new MauiLibrary
-        {
-            Title = "Prism.Maui",
-            Description =
-                "A library that provides an MVVM framework for .NET MAUI applications. It helps with application architecture, navigation, dependency injection, and more.",
-            ImageUrl =  "https://api.nuget.org/v3-flatcontainer/esri.arcgisruntime.maui/100.14.1-preview3/icon"
-        },
+    new MauiLibrary
+    {
+        Title = "Prism.Maui",
+        Description =
+            "A library that provides an MVVM framework for .NET MAUI applications. It helps with application architecture, navigation, dependency injection, and more.",
+        ImageUrl = "https://api.nuget.org/v3-flatcontainer/esri.arcgisruntime.maui/100.14.1-preview3/icon"
+    },
 
-        new MauiLibrary
-        {
-            Title = "Plugin.Permissions",
-            Description =
-                "A cross-platform plugin for managing and requesting permissions in .NET MAUI applications. It simplifies the process of handling permissions like location, camera, storage, etc.",
-            ImageUrl =  "https://api.nuget.org/v3-flatcontainer/syncfusion.maui.core/21.2.10/icon"
-        }
-    ];
-        
+    new MauiLibrary
+    {
+        Title = "Plugin.Permissions",
+        Description =
+            "A cross-platform plugin for managing and requesting permissions in .NET MAUI applications. It simplifies the process of handling permissions like location, camera, storage, etc.",
+        ImageUrl = "https://api.nuget.org/v3-flatcontainer/syncfusion.maui.core/21.2.10/icon"
+    }
+];
+
     private void SearchItemsForUser()
     {
         // Use a temporary list to hold filtered items before adding them to the ObservableCollection

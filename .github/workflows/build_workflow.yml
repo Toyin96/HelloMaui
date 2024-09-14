@@ -21,7 +21,7 @@ jobs:
           dotnet-version: 8.0
           
       - name: Format project
-        run: dotnet format D:\a\HelloMaui\HelloMaui\HelloMaui.sln -v detailed --verify-no-changes
+        run: dotnet format HelloMaui.csproj -v detailed --verify-no-changes
         
       - name: Build project
         run: dotnet build

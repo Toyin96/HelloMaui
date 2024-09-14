@@ -8,7 +8,7 @@ public class AppStyleHelperClass
         {
             return (T)resource;
         };
-        
+
         throw new KeyNotFoundException($"Could not find style {styleName}");
     }
 }

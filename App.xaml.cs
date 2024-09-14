@@ -14,21 +14,21 @@ public partial class App : Application
     protected override void OnStart()
     {
         base.OnStart();
-        
+
         Trace.WriteLine("Application started======>");
     }
 
     protected override void OnSleep()
     {
         base.OnSleep();
-        
+
         Trace.WriteLine("Application sleep======>");
     }
 
     protected override void OnResume()
     {
         base.OnResume();
-        
+
         Trace.WriteLine("Application resumed======>");
     }
 }

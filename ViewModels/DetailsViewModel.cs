@@ -19,7 +19,7 @@ public class DetailsViewModel : BaseViewModel, IQueryAttributable
     }
     public string LabelDescription
     {
-        get => _labelDescription;   
+        get => _labelDescription;
         set => SetField(ref _labelDescription, value);
     }
 
@@ -37,20 +37,20 @@ public class DetailsViewModel : BaseViewModel, IQueryAttributable
     {
         _navigateCommand = new AsyncRelayCommand(async () => await HandleBackButtonClicked());
     }
-    
+
     private async Task HandleBackButtonClicked()
     {
         await Shell.Current.GoToAsync("..", true);
     }
-    
+
     public void ApplyQueryAttributes(IDictionary<string, object> query)
     {
         var model = (MauiLibrary)query[DetailsPageKey];
-        
+
         LabelTitle = model.Title; // set the content page title
-        
-        ImageSource = model.ImageUrl; 
-        LabelTitle = model.Title; 
+
+        ImageSource = model.ImageUrl;
+        LabelTitle = model.Title;
         LabelDescription = model.Description;
     }
 }
