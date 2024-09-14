@@ -35,7 +35,7 @@ public class ListPage : BaseContentPage<ListViewModel>
                                 StoppedTypingTimeThreshold = 1000,
                                 ShouldDismissKeyboardAutomatically = true,
                             }.Bind(UserStoppedTypingBehavior.CommandProperty,
-                                getter: (ListViewModel vm) => vm.SearchItemsCommand)
+                                getter: (ListViewModel vm) => vm.SearchItemsForUserCommand)
                         },
                 }
                     .Placeholder("Search for your preferred libraries")
@@ -53,14 +53,15 @@ public class ListPage : BaseContentPage<ListViewModel>
             }.Bind(CollectionView.ItemsSourceProperty,
                     getter: (ListViewModel vm) => vm.MauiLibraries)
                 .Bind(CollectionView.SelectionChangedCommandProperty,
-                getter: (ListViewModel vm) => vm.ItemSelectedCommand)
+                getter: (ListViewModel vm) => vm.HandleSelectionChangedCommand)
             .Bind(CollectionView.SelectedItemProperty,
                 getter: (ListViewModel vm) => vm.SelectedLibrary,
                 setter: (ListViewModel vm, MauiLibrary? mauiLibrary) => vm.SelectedLibrary = mauiLibrary)
         }.Bind(RefreshView.CommandProperty,
-                getter: (ListViewModel vm) => vm.RefreshCommand)
+                getter: (ListViewModel vm) => vm.HandleRefreshingCommand)
             .Bind(RefreshView.IsRefreshingProperty,
-            getter: (ListViewModel vm) => vm.IsRefreshing);
+            getter: (ListViewModel vm) => vm.IsRefreshing,
+            setter: (ListViewModel vm, bool isRefreshing) => vm.IsRefreshing = isRefreshing);
         //.Margins(top:24);
     }
 

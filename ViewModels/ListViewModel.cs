@@ -3,75 +3,33 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.Maui.Controls;
 
 namespace HelloMaui.ViewModels;
 
-public class ListViewModel : BaseViewModel
+public partial class ListViewModel(IDispatcher dispatcher) : BaseViewModel
 {
-    private readonly ICommand _itemSelectedCommand;
-    private readonly ICommand _refreshCommand;
-    private readonly ICommand _searchItemsCommand;
+    private readonly IDispatcher _dispatcher = dispatcher;
+    
+    [ObservableProperty]
     private MauiLibrary? _selectedLibrary;
+    [ObservableProperty]
     private bool _isRefreshing;
+    [ObservableProperty]
     private string _searchBarText;
+    [ObservableProperty]
     private bool _isSearchBarEnabled;
+    [ObservableProperty]
     private ObservableCollection<MauiLibrary> _mauiLibraries = new(GetDataSource());
-
-    public bool IsRefreshing
-    {
-        get => _isRefreshing;
-        set => SetField(ref _isRefreshing, value);
-    }
-
-    public ICommand SearchItemsCommand
-    {
-        get => _searchItemsCommand;
-    }
-    public bool IsSearchBarEnabled
-    {
-        get => _isSearchBarEnabled;
-        set => SetField(ref _isSearchBarEnabled, value);
-    }
-
-    public string SearchBarText
-    {
-        get => _searchBarText;
-        set => SetField(ref _searchBarText, value);
-    }
-    public ICommand RefreshCommand
-    {
-        get => _refreshCommand;
-    }
 
     // NB: observableCollection is preferred because the amount the collection changes, it automatically
     // updates the collection view unlike list or IEnumerable where its manual
-    public ObservableCollection<MauiLibrary> MauiLibraries
-    {
-        get => _mauiLibraries;
-        set => SetField(ref _mauiLibraries, value);
-    }
+    
 
-    public ICommand ItemSelectedCommand
-    {
-        get => _itemSelectedCommand;
-    }
-
-    public MauiLibrary? SelectedLibrary
-    {
-        get => _selectedLibrary;
-        set => SetField(ref _selectedLibrary, value);
-    }
-
-    public ListViewModel()
-    {
-        _itemSelectedCommand = new AsyncRelayCommand(async () => await HandlerSelectionChanged());
-        _refreshCommand = new AsyncRelayCommand(async () => await HandleRefreshing());
-        _searchItemsCommand = new RelayCommand(() => SearchItemsForUser());
-    }
-
-    private async Task HandlerSelectionChanged()
+    [RelayCommand]
+    private async Task HandleSelectionChanged()
     {
         if (_selectedLibrary != null)
         {
@@ -84,6 +42,7 @@ public class ListViewModel : BaseViewModel
         _selectedLibrary = null;
     }
 
+    [RelayCommand]
     private async Task HandleRefreshing()
     {
         // disable search bar
@@ -186,7 +145,8 @@ public class ListViewModel : BaseViewModel
     }
 ];
 
-    private void SearchItemsForUser()
+    [RelayCommand]
+    private async Task SearchItemsForUser()
     {
         // Use a temporary list to hold filtered items before adding them to the ObservableCollection
         var filteredItems = new List<MauiLibrary>();
@@ -208,7 +168,7 @@ public class ListViewModel : BaseViewModel
         }
 
         // Ensure updates are performed on the main thread
-        Application.Current?.Dispatcher.Dispatch(() =>
+        await _dispatcher.DispatchAsync(() =>
         {
             MauiLibraries.Clear();
             foreach (var item in filteredItems)
