@@ -32,7 +32,7 @@ public static class MauiProgram
         builder.Services.AddTransient<ListViewModel>();
         builder.Services.AddTransient<DetailsViewModel>();
 
-        
+
         return builder.Build();
     }
 }

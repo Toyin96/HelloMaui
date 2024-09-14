@@ -17,13 +17,13 @@ public class MauiLibraryDataTemplate() : DataTemplate(() => CreateTemplate())
             (Row.Title, _titleHeight),
             (Row.Description, _descriptionHeight),
             (Row.BottomPadding, _Padding)),
-        
+
         ColumnDefinitions = Columns.Define(
             (Column.Image, (_imageRadius * 2) + _Padding),
             (Column.Text, Star)),
-        
+
         ColumnSpacing = 4,
-        
+
         Children =
         {
             new Image()
@@ -35,7 +35,7 @@ public class MauiLibraryDataTemplate() : DataTemplate(() => CreateTemplate())
                 .Bind(Image.SourceProperty,
                     getter: (MauiLibrary model) => model.ImageUrl,
                     mode: BindingMode.OneWay),
-            
+
             new Label()
                 .Font(size: 22, bold: true)
                 .Bind(Label.TextProperty,
@@ -47,7 +47,7 @@ public class MauiLibraryDataTemplate() : DataTemplate(() => CreateTemplate())
                 .Paddings(bottom:5)
                 .Row(Row.Title)
                 .Column(Column.Text),
-            
+
             new Label()
                 {
                     MaxLines = 2,
@@ -63,10 +63,10 @@ public class MauiLibraryDataTemplate() : DataTemplate(() => CreateTemplate())
                 .Paddings(bottom:5)
                 .Row(Row.Description)
                 .Column(Column.Text)
-            
+
         }
     };
-    
-    enum Row {Title, Description, BottomPadding}
-    enum Column {Image, Text}
+
+    enum Row { Title, Description, BottomPadding }
+    enum Column { Image, Text }
 }

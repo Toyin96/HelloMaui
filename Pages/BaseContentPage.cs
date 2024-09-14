@@ -9,7 +9,7 @@ public abstract class BaseContentPage<T> : ContentPage where T : BaseViewModel
     protected BaseContentPage(T viewModel)
     {
         BindingContext = viewModel; // every subtype must pass the view model
-        
+
         On<iOS>().SetUseSafeArea(true);
     }
 }

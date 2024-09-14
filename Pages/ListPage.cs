@@ -26,8 +26,8 @@ public class ListPage : BaseContentPage<ListViewModel>
                 HorizontalOptions = LayoutOptions.Fill,
 
                 Header = new SearchBar()
-                    {
-                        Behaviors =
+                {
+                    Behaviors =
                         {
                             new UserStoppedTypingBehavior()
                             {
@@ -37,7 +37,7 @@ public class ListPage : BaseContentPage<ListViewModel>
                             }.Bind(UserStoppedTypingBehavior.CommandProperty,
                                 getter: (ListViewModel vm) => vm.SearchItemsCommand)
                         },
-                    }
+                }
                     .Placeholder("Search for your preferred libraries")
                     .BackgroundColor(Colors.LightBlue)
                     .Bind(SearchBar.TextProperty,
@@ -71,7 +71,7 @@ public class ListPage : BaseContentPage<ListViewModel>
         this.ShowPopup(new WelcomePopup());
     }
 
-    private readonly VerticalStackLayout _footer = new ()
+    private readonly VerticalStackLayout _footer = new()
     {
         Children =
         {
