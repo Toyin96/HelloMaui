@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:helloMaui="clr-namespace:HelloMaui"
+             x:Class="HelloMaui.MainPage_XAML"
+             BackgroundColor="DarkViolet">
+    
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid
+                BackgroundColor="LightSteelBlue"
+                RowDefinitions="*,50,40,500"
+                ColumnDefinitions="*,*,*"
+                RowSpacing="12"
+                ColumnSpacing="12"
+                VerticalOptions="Start"
+                HorizontalOptions="Center"
+                Padding="12"
+                Margin="0,6,0,0">
+                
+                <Image
+                    HeightRequest="250"
+                    WidthRequest="500"
+                    Source="dotnet_bot"
+                    Grid.Row="0"
+                    Grid.ColumnSpan="3">
+                </Image>
+                
+                <Label
+                    Text="Label Text"
+                    FontSize="40"
+                    TextColor="Chartreuse"
+                    HeightRequest="90"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    VerticalTextAlignment="Center"
+                    Padding="10"
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="3"
+                    >
+                </Label>
+                
+                <Entry
+                    Placeholder="First entry"
+                    PlaceholderColor="Green"
+                    TextColor="Black"
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    >
+                </Entry>
+                
+                <Entry
+                    Placeholder="Second entry"
+                    PlaceholderColor="Green"
+                    TextColor="Black"
+                    Grid.Row="2"
+                    Grid.Column="1"
+                >
+                </Entry>
+                
+                <Entry
+                    Placeholder="Third entry"
+                    PlaceholderColor="Green"
+                    TextColor="Black"
+                    Grid.Row="2"
+                    Grid.Column="2"
+                >
+                </Entry>
+                
+                <Label
+                    Text="Large Text"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    Grid.Row="3"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="3"
+                    FontSize="100"
+                    >
+                </Label>
+                
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

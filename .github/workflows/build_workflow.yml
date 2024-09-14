@@ -1,0 +1,29 @@
+name: build project
+
+on:
+  pull_request:
+    branches: ['main']
+
+jobs:
+  Build:
+    name: App project builder
+    runs-on: windows-latest
+    
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4.1.7
+        
+      - name: Setup dotnet for project
+        uses: actions/setup-dotnet@v4.0.1
+        with:
+          dotnet-version: 8.0
+          
+      - name: Format project
+        run: dotnet format --verbose --verify-no-changes
+        
+      - name: Build project
+        run: dotnet build
+        
+      - name: Notify workflow completion
+        run: echo "I am done building the project"
+        
